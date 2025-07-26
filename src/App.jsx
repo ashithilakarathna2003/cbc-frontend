@@ -29,3 +29,8 @@ function App() {
 }
 
 export default App;
+
+
+//https://jmgxjrwvtirrxnrjarwa.supabase.co 
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImptZ3hqcnd2dGlycnhucmphcndhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMzNzQ2MzQsImV4cCI6MjA2ODk1MDYzNH0.ZgiWBR8RviMUxZx48Dw3rOfgevFcGH1Zf9zLwRZtnWo

@@ -9,8 +9,7 @@ export const sampleProducts = [
         ],
         "description": "A lightweight, buildable foundation that leaves your skin glowing and flawless all day.",
         "images": [
-            "foundation1.jpg",
-            "foundation2.jpg"
+            "https://images.unsplash.com/photo-1611078489935-25e8e3db2d86",
         ],
         "labelledPrice": 4500,
         "price": 3990,
@@ -28,7 +27,7 @@ export const sampleProducts = [
         ],
         "description": "Ultra-hydrating daily moisturizer for all skin types, enriched with hyaluronic acid.",
         "images": [
-            "moisturizer1.jpg"
+            "https://images.pexels.com/photos/715688/pexels-photo-715688.jpeg"
         ],
         "labelledPrice": 3500,
         "price": 2990,
