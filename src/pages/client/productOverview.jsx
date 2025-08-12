@@ -38,15 +38,24 @@ export default function ProductOverviewPage(){
         {
 
             status == "success" && (
-        <div className="w-full h-full flex">
-            <div className="w-[50%] h-full flex justify-center items-center">
+        <div className="w-full h-full flex flex-col md:flex-row md:max-h-full md:overflow-y-scroll pt-4">
+              <h1 className="w-full md:hidden block my-8 text-center text-4xl text-secondary font-semibold">{product.name}
+                        {
+                            product.altNames.map((altName,index)=>{
+                                return(
+                                    <span key = {index} className="text-4xl text-gray-600"> {" | " +altName}</span>
+                                )
+                            })
+                        }
+                    </h1>
+            <div className="w-full md:w-[50%] md:h-full flex justify-center ">
                 <ImageSlider images={product.images}/>
 
             </div>
 
-            <div className="w-[50%] h-full flex justify-center items-center">
-                <div className="w-[500px] h-[600px] flex flex-col items-center">
-                    <h1 className="w-full text-center text-4xl text-secondary font-semibold">{product.name}
+            <div className="w-full md:w-[50%] md:h-full flex justify-center">
+                <div className="w-full md:w-[500px] md:h-[600px] flex flex-col items-center ">
+                    <h1 className="w-full hidden md:block text-center text-4xl text-secondary font-semibold">{product.name}
                         {
                             product.altNames.map((altName,index)=>{
                                 return(
@@ -66,7 +75,7 @@ export default function ProductOverviewPage(){
                             </div>
                              :<span className="text-4xl mx-4 font-bold text-accent ">{product.price.toFixed(2)}</span>
                         }
-                        <div className="w-full flex justify-center items-center mt-4">
+                        <div className="w-full flex flex-col md:flex-row gap-2 justify-center items-center mt-4">
                             <button className="w-[200px] h-[50px] mx-4 bg-accent text-white rounded-2xl hover:bg-accent/80 transition-all duration-300 cursor-pointer" onClick={()=>{
                                 
                                 console.log("Old cart")

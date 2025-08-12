@@ -56,6 +56,7 @@ export default function AdminOrdersPage() {
         if (status === "pending") color = "bg-yellow-100 text-yellow-800";
         if (status === "completed") color = "bg-green-100 text-green-800";
         if (status === "cancelled") color = "bg-red-100 text-red-800";
+        if (status === "returned") color = "bg-purple-100 text-purple-800";
         return <span className={`px-3 py-1 rounded-full text-xs font-semibold ${color}`}>{status}</span>;
     }
 
@@ -141,6 +142,45 @@ export default function AdminOrdersPage() {
                         <p><strong>Phone:</strong> {selectedOrder.phone}</p>
                         <p><strong>Address:</strong> {selectedOrder.address}</p>
                         <p><strong>Status:</strong> {selectedOrder.status}</p>
+
+                        {/* Status change dropdown */}
+                        <select
+                            className="mt-2 border border-gray-300 rounded px-2 py-1"
+                            onChange={async (e) => {
+                                const updatedValue = e.target.value;
+                                try {
+                                    const token = localStorage.getItem("token");
+                                    await axios.put(
+                                        `${import.meta.env.VITE_BACKEND_URL}/api/orders/${selectedOrder.orderId}/${updatedValue}`,
+                                        {},
+                                        {
+                                            headers: {
+                                                Authorization: "Bearer " + token,
+                                            },
+                                        }
+                                    );
+
+                                    toast.success("Order status updated");
+
+                                    // Refresh the table
+                                    setIsLoading(true);
+
+                                    // Update the modal without closing it
+                                    const updatedOrder = { ...selectedOrder, status: updatedValue };
+                                    setSelectedOrder(updatedOrder);
+                                } catch (err) {
+                                    toast.error("Error updating order status");
+                                    console.error(err);
+                                }
+                            }}
+                        >
+                            <option selected disabled>Change Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="returned">Returned</option>
+                        </select>
+
                         <p><strong>Date:</strong> {new Date(selectedOrder.date).toLocaleString()}</p>
                         <hr className="my-4" />
                         <h3 className="font-semibold mb-2">Products</h3>
